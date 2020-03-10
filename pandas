@@ -10,3 +10,6 @@ df.columns = headers     *headers je list sa naslovima kolona
 
 path = "C:\Windows\Milos\file.csv"
 df.to_csv(path)
+df.dtypes
+df.describe()    df.describe(include="all")
+df.info()
