@@ -1,0 +1,12 @@
+import pandas as pd
+
+url = "http://archive.ics.uci.edu/ml/machine-learning-databases/autos/imports-85.data"
+
+df = pd.read_csv(url, header = None)
+
+df.head(n)
+df.tail(n)
+df.columns = headers     *headers je list sa naslovima kolona
+
+path = "C:\Windows\Milos\file.csv"
+df.to_csv(path)
