@@ -15,4 +15,5 @@ df.describe()    df.describe(include="all")
 df.info()
 
 dataframes.dropna()  # to drop rows/columns with missing values
-Series.dropna(self, axis=0, inplace=False, how=None)[
+Series.dropna(self, axis=0, inplace=False, how=None)
+dataframe.replace(missing_value, new_value)
