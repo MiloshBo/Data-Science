@@ -13,6 +13,7 @@ df.to_csv(path)
 df.dtypes
 df.describe()    df.describe(include="all")
 df.info()
+df.astype()    #converting data types
 
 dataframes.dropna()  # to drop rows/columns with missing values
 Series.dropna(self, axis=0, inplace=False, how=None)
