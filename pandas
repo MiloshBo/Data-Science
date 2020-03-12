@@ -18,3 +18,5 @@ df.astype()    #converting data types
 dataframes.dropna()  # to drop rows/columns with missing values
 Series.dropna(self, axis=0, inplace=False, how=None)
 dataframe.replace(missing_value, new_value)
+
+pandas.get_dummies()
