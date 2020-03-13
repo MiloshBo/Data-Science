@@ -23,3 +23,5 @@ pandas.get_dummies()
 
 df.describe()     # summarize statistics
 .value_counts()
+
+df.groupby()
