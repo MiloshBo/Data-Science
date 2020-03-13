@@ -20,3 +20,6 @@ Series.dropna(self, axis=0, inplace=False, how=None)
 dataframe.replace(missing_value, new_value)
 
 pandas.get_dummies()
+
+df.describe()     # summarize statistics
+.value_counts()
