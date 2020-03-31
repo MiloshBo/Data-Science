@@ -9,3 +9,9 @@ for row in apps_data[1:]:
     all_ratings.append(rating)
     
 avg_rating = sum(all_ratings) / len(all_ratings)
+
+
+with open('googleplaystore.csv') as fp:
+    reader = csv.reader(fp):
+    header = next(reader)
+    print(f"header: {header}")
