@@ -15,3 +15,167 @@ with open('googleplaystore.csv') as fp:
     reader = csv.reader(fp):
     header = next(reader)
     print(f"header: {header}")
+    
+    
+# https://docs.python.org/3/library/csv.html
+# https://automatetheboringstuff.com/chapter14/
+# https://docs.python.org/3/library/io.html
+
+import csv
+
+exampleFile = open('example.csv')
+exampleReader = csv.reader(exampleFile)
+exampleData = list(exampleReader)
+print(exampleData)
+print(exampleData[1][0])
+
+
+with open('example.csv', 'r') as exampleFile:
+	exampleReader = csv.reader(exampleFile, delimiter="\t")
+	for row in exampleReader:
+		print('Line #' + str(exampleReader.line_num) + ' ' + str(row))
+		
+with open('eggs.csv', newline='') as csvfile:
+	spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
+	for row in spamreader:
+		print(', '.join(row))
+
+with open('eggs.csv', 'w', newline='') as csvfile:
+	spamwriter = csv.writer(csvfile, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
+    spamwriter.writerow(['Spam'] * 5 + ['Baked Beans'])
+	spamwriter.writerow(['Spam', 'Lovely Spam', 'Wonderful Spam'])
+
+with open('names.csv', newline='') as csvfile:
+	reader = csv.DictReader(csvfile)
+	for row in reader:
+		print(row['first_name'], row['last_name'])
+print(row)
+
+with ope('names.csv', 'w', newline='') as csvfile:
+		fieldnames = ['first_name', 'last_name']
+		writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+		writer.writeheader()
+		writer.writerow({'first_name': 'Baked', 'last_name': 'Beans'})
+		writer.writerow({'first_name': 'Lovely', 'last_name': 'Spam'})
+
+outputFile = open('output.csv', 'w', newline='')
+outputWriter = csv.writer(outputFile)
+outputWriter.writerow(['spam', 'eggs', 'bacon', 'ham'])
+outputWriter.writerow(['Hello, world!', 'eggs', 'bacon', 'ham'])
+outputWriter.writerow([1, 2, 3.14, 4])
+outputFile.close()
+
+csvFile = open('example.csv', 'w', newline='')
+csvWriter = csv.writer(csvFile, delimiter='\t', lineterminator='\n\n')
+csvWriter.writerow(['apples', 'oranges', 'grapes'])
+csvWriter.writerow(['eggs', 'bacon', 'ham'])
+csvWriter.writerow(['spam', 'spam', 'spam', 'spam', 'spam', 'spam'])
+csvFile.close()		
+
+with open('cola.txt', 'r') as csv_file:
+    csv_reader = csv.reader(csv_file)
+	for line in csv_reader:
+        print(line)    
+		
+csvFile = open(r"c:\Python36\kodovi\test.csv", 'w+')
+try:
+	writer = csv.writer(csvFile)
+	writer.writerow(('number', 'number plus 2', 'number times 2'))
+finally:
+	csvFile.close()
+	
+	
+# removecsvheader.py - Removes the header from all CSV files in the current working directory
+import csv, os
+os.makedirs('headerRemoved', exist_ok=True)
+# loop through every file in the current working directory.
+for csvFilename in os.listdir('.'):
+    if not csvFilename.endswith('.csv'):
+        continue # skip non-csv files
+    print('Removing header from ' + csvFilename + '...')
+# Read the CSV file in ( skipping first row )
+    csvRows = []
+    csvFileObj = open(csvFilename)
+    readerObj = csv.reader(csvFileObj)
+    for row in readerObj:
+	    if readerObj.line_num == 1:
+		    continue  # skip first row
+	    csvRows.append(row)
+    csvFileObj.close()
+# Write out the CSV file
+    csvFileObj = open(os.path.join('headerRemoved', csvFilename), 'w', newline='')
+    csvWriter = csv.writer(csvFileObj)
+    for row in csvRows:
+	    csvWriter.writerow(row)
+    csvFileObj.close()
+
+
+# removecsvheader.py - Removes the header from all CSV files in the current working directory
+import csv, os
+import shutil
+os.makedirs('headerRemoved', exist_ok=True)
+# loop through every file in the current working directory.
+for csvFilename in os.listdir('.'):
+    if not csvFilename.endswith('.csv'):
+        continue # skip non-csv files
+    print('Removing header from ' + csvFilename + '...')
+    targetFilename = os.path.join('headerRemoved', csvFilename)
+    with open(csvFilename) as ifo, open(targetFilename, "w") as ofo:
+        ifo.readline()     # eliminates the fist line, the rest remains
+        shutil.copyfileobj(ifo, ofo)
+
+
+# retrieve an HTML table and write it as a CSV
+html = requests.get("http://en.wikipedia.org/wiki/Comparison_of_text_editors")
+bsObj = BeautifulSoup(html.content, 'html.parser')
+# The main comparison table is currently the first table on the page
+table = bsObj.find("table",{"class":"wikitable"})
+rows = table.find_all("tr")
+csvFile = open("c:/Python36/kodovi/editors.csv", 'wt')
+writer = csv.writer(csvFile)
+try:
+	for row in rows:
+		csvRow = []
+		for cell in row.find_all(['td','th']):
+			csvRow.append(cell.get_text())
+			writer.writerow(csvRow)
+finally:
+csvFile.close()
+
+
+# io - as a string and wrap it in an object that allows Python to treat it like a
+#file, without ever actually saving the file.
+import io 	
+data = requests.get("http://pythonscraping.com/files/MontyPythonAlbums.csv").content.decode('ascii', 'ignore')
+dataFile = io.StringIO(data)
+csvReader = csv.reader(dataFile)
+for row in csvReader:
+	print(row)
+   # dictionary form:
+data = requests.get("http://pythonscraping.com/files/MontyPythonAlbums.csv").content.decode('ascii', 'ignore')
+dataFile = io.StringIO(data)
+dictReader = csv.DictReader(dataFile)
+print(dictReader.fieldnames)
+for row in dictReader:
+	print(row)
+	
+with open('example.csv', newline='') as csvfile:
+	dialect = csv.Sniffer().sniff(csvfile.read(1024))
+	csvfile.seek(0)
+	reader = csv.reader(csvfile, dialect)
+
+
+# import the reader function from the csv module
+from csv import reader
+# use the python built-in function open()
+# to open the children.csv file
+opened_file = open('children.csv')
+# use csv.reader() to parse the data from
+# the opened file
+read_file = reader(opened_file)
+# use list() to convert the read file
+# into a list of lists format
+children = list(read_file)
+# remove the first row of the data, which
+# contains the column names
+children = children[1:]
