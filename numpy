@@ -42,3 +42,7 @@ print("itemsize: ", x3.itemsize, "bytes")
 print("nbytes: ", x3.nbytes, "bytes")
 print(x1[4])
 print(x2[2, 0])
+
+to modife values:
+x2[0, 0] = 12
+print(x2)
