@@ -51,3 +51,4 @@ print(x2)
 array slicing:
 x[start:stop:step]
 x[::-1]      # reverse array
+x[5::-2]  # reversed every other from index 5
