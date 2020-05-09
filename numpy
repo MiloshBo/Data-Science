@@ -51,4 +51,12 @@ print(x2)
 array slicing:
 x[start:stop:step]
 x[::-1]      # reverse array
-x[5::-2]  # reversed every other from index 5
+x[5::-2]     # reversed every other from index 5
+
+Multi-dimensional subarrays
+x2[:2, :3]        # two rows, three columns
+x2[:3, ::2]       # all rows, every other column
+x2[::-1, ::-1]    # reversed
+print(x2[:, 0])   # first column of x2
+print(x2[0, :])   # first row of x2
+print(x2[0])      # equivalent to x2[0, :]
