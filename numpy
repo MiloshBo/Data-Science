@@ -46,3 +46,8 @@ print(x2[2, 0])
 to modife values:
 x2[0, 0] = 12
 print(x2)
+
+
+array slicing:
+x[start:stop:step]
+x[::-1]      # reverse array
