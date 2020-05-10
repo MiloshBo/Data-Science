@@ -60,3 +60,42 @@ x2[::-1, ::-1]    # reversed
 print(x2[:, 0])   # first column of x2
 print(x2[0, :])   # first row of x2
 print(x2[0])      # equivalent to x2[0, :]
+
+x2_sub_copy = x2[:2, :2].copy()      # Creating copies of arrays
+
+grid = np.arange(1, 10).reshape((3, 3))      # Reshaping of arrays
+x.reshape((1, 3))         # row vector via reshape
+x[np.newaxis, :]          # row vector via newaxis
+x.reshape((3, 1))         # column vector via reshape
+x[:, np.newaxis]          # column vector via newaxis
+
+x = np.array([1, 2, 3])
+y = np.array([3, 2, 1])
+z = [99, 99, 99]
+np.concatenate([x, y, z])   # concatenation
+
+grid = np.array([[1, 2, 3],
+                 [4, 5, 6]])
+np.concatenate([grid, grid])   # concatenate along the first axis
+np.concatenate([grid, grid], axis=1)
+
+# working with arrays of mixed dimensions
+x = np.array([1, 2, 3])
+grid = np.array([[9, 8, 7],
+                 [6, 5, 4]])
+np.vstack([x, grid])
+
+# horizontally stack the arrays
+y = np.array([[99],
+              [99]])
+np.hstack([grid, y])
+
+np.dstack  # 3rd stack array
+
+# splitting of arrays
+x = [1, 2, 3, 99, 99, 3, 2, 1]
+x1, x2, x3 = np.split(x, [3, 5])
+
+grid = np.arange(16).reshape((4, 4))
+upper, lower = np.vsplit(grid, [2])
+left, right = np.hsplit(grid, [2])
